@@ -4,11 +4,15 @@ import  ServicesSection  from "@/components/home/ServicesSection";
 import  FeaturedJobsSection  from "@/components/home/FeaturedJobsSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { CTASection } from "@/components/home/CTASection";
+import IndustrySolutionsSection from "@/components/home/IndustrySolutionsSection";
+import ManpowerServices from "@/components/home/ManpowerServices";
 
 const Index = () => {
   return (
     <Layout>
       <HeroSection />
+      <IndustrySolutionsSection></IndustrySolutionsSection>
+      <ManpowerServices/>
       <ServicesSection />
       <FeaturedJobsSection />
       <TestimonialsSection />
