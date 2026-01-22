@@ -1,16 +1,68 @@
-import { motion } from "framer-motion";
-import { ArrowRight, Play, Users, Briefcase, Building2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { ArrowRight, Play, Briefcase } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import heroImage from "@/assets/hero-team.jpg";
 
 const stats = [
-  { icon: Users, value: "10K+", label: "Candidates Placed" },
-  { icon: Briefcase, value: "500+", label: "Partner Companies" },
-  { icon: Building2, value: "15+", label: "Years Experience" },
+  { value: 10000, label: "Candidates Placed", suffix: "+" },
+  { value: 500, label: "Partner Companies", suffix: "+" },
+  { value: 15, label: "Years Experience", suffix: "+" },
 ];
 
-export function HeroSection() {
+const rotatingTexts = ["Perfect Talent", "Dream Job", "Career Growth", "Future Team"];
+
+function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+  const [displayValue, setDisplayValue] = useState("0");
+  const nodeRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const controls = animate(count, value, {
+      duration: 2,
+      ease: "easeOut",
+      onUpdate: (latest) => {
+        setDisplayValue(Math.round(latest).toLocaleString());
+      }
+    });
+
+    return controls.stop;
+  }, [value, count]);
+
+  return (
+    <span ref={nodeRef}>
+      {displayValue}
+      {suffix}
+    </span>
+  );
+}
+
+function RotatingText() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % rotatingTexts.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <motion.span
+      key={index}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5 }}
+      className="text-gradient inline-block"
+    >
+      {rotatingTexts[index]}
+    </motion.span>
+  );
+}
+
+export default function HeroSection() {
   return (
     <section className="relative min-h-[90vh] flex items-center gradient-hero overflow-hidden">
       {/* Background Pattern */}
@@ -40,7 +92,8 @@ export function HeroSection() {
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               Find Your{" "}
-              <span className="text-gradient">Perfect Talent</span>{" "}
+              <RotatingText />
+              {" "}
               Anytime & Anywhere
             </h1>
 
@@ -50,16 +103,18 @@ export function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-              <Button variant="hero" size="xl" asChild>
-                <Link to="/jobs">
-                  Browse Jobs <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
-              <Button variant="heroOutline" size="xl" asChild>
-                <Link to="/services">
-                  <Play className="w-5 h-5" /> Our Services
-                </Link>
-              </Button>
+              <button 
+                className="bg-foreground hover:bg-foreground/90 text-background px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:shadow-lg inline-flex items-center justify-center gap-2 text-lg"
+                onClick={() => window.location.href = '/jobs'}
+              >
+                Browse Jobs <ArrowRight className="w-5 h-5" />
+              </button>
+              <button 
+                className="border-2 border-border hover:border-primary bg-background px-8 py-4 rounded-lg font-medium transition-all duration-300 inline-flex items-center justify-center gap-2 text-foreground hover:text-primary text-lg"
+                onClick={() => window.location.href = '/services'}
+              >
+                <Play className="w-5 h-5" /> Our Services
+              </button>
             </div>
 
             {/* Stats */}
@@ -72,10 +127,9 @@ export function HeroSection() {
                   transition={{ delay: 0.4 + index * 0.1 }}
                   className="text-center lg:text-left"
                 >
-                  <div className="flex items-center justify-center lg:justify-start gap-2 mb-1">
-                    <stat.icon className="w-5 h-5 text-primary" />
-                    <span className="text-2xl md:text-3xl font-bold text-foreground">
-                      {stat.value}
+                  <div className="mb-1">
+                    <span className="text-3xl md:text-4xl  font-bold text-foreground">
+                      <Counter value={stat.value} suffix={stat.suffix} />
                     </span>
                   </div>
                   <p className="text-sm text-muted-foreground">{stat.label}</p>
@@ -122,6 +176,25 @@ export function HeroSection() {
           </motion.div>
         </div>
       </div>
+
+      <style>{`
+        .text-gradient {
+          background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary)) 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+        .gradient-hero {
+          background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 100%);
+        }
+        .gradient-primary {
+          background: linear-gradient(135deg, hsl(var(--primary)/0.8) 0%, hsl(var(--primary)) 100%);
+        }
+        .glass-card {
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(10px);
+        }
+      `}</style>
     </section>
   );
 }
