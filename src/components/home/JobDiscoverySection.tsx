@@ -130,12 +130,12 @@ export function JobDiscoverySection() {
                       }`}
                     >
                       <div className="flex items-start justify-between mb-4">
-                        <div className={`w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 ${
+                        <div className={`w-14 h-14 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300 ${
                           isHovered 
                             ? 'bg-white' 
                             : 'bg-gradient-to-br from-emerald-500 to-emerald-600'
                         }`}>
-                          <img
+                           <img
   src={isHovered ? "https://i.postimg.cc/0NBH41GS/job-description.png" : "https://i.postimg.cc/8kBmJVFb/engineering.png"}
   alt="Building"
   className="w-10 h-10 transition-all duration-300"
@@ -186,6 +186,18 @@ export function JobDiscoverySection() {
                           {job.salary_display}
                         </p>
                       )}
+
+                      {/* View Details Button */}
+                      <div className="mt-4 pt-4 border-t border-gray-200">
+                        <div className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${
+                          isHovered ? 'text-white' : 'text-black'
+                        }`}>
+                          View Details 
+                          <ArrowRight className={`w-4 h-4 transition-all duration-300 ${
+                            isHovered ? 'text-emerald-400 translate-x-1' : 'text-black'
+                          }`} />
+                        </div>
+                      </div>
                     </Link>
                   </motion.div>
                 );
