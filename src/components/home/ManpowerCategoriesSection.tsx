@@ -61,7 +61,7 @@ export default function ManpowerCategoriesSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-20 lg:py-28 bg-gradient-to-b from-gray-50 to-white">
+    <section ref={ref} className="py-20 lg:py-28 bg-gradient-to-b from-black via-zinc-900 to-black">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <motion.div
@@ -70,13 +70,13 @@ export default function ManpowerCategoriesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-600 text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-sm font-medium mb-4">
             Workforce Categories
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
             Complete <span className="text-gradient">Manpower Spectrum</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
             From C-suite executives to ground-level support staff — we cover every workforce need under one roof.
           </p>
         </motion.div>
@@ -92,10 +92,10 @@ export default function ManpowerCategoriesSection() {
                 initial={{ opacity: 0, x: -50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-                className="group relative bg-white rounded-xl p-5 shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 hover:-translate-y-2 flex-1"
+                className="group relative bg-gradient-to-br from-zinc-900 to-zinc-800 rounded-xl p-5 shadow-lg hover:shadow-2xl border border-zinc-700 transition-all duration-300 hover:-translate-y-2 flex-1"
               >
                 <div className="absolute top-3 right-3">
-                  <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
+                  <span className="text-xs font-medium text-zinc-400 bg-zinc-800 px-2 py-1 rounded-full">
                     {category.level}
                   </span>
                 </div>
@@ -104,8 +104,8 @@ export default function ManpowerCategoriesSection() {
                   <category.icon className="w-5 h-5 text-white" />
                 </div>
                 
-                <h3 className="text-base font-semibold mb-2 text-gray-900">{category.title}</h3>
-                <p className="text-xs text-gray-600 leading-relaxed">{category.examples}</p>
+                <h3 className="text-base font-semibold mb-2 text-white">{category.title}</h3>
+                <p className="text-xs text-zinc-400 leading-relaxed">{category.examples}</p>
               </motion.div>
             ))}
           </div>
@@ -145,8 +145,8 @@ export default function ManpowerCategoriesSection() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="w-full max-w-2xl px-8"
             >
-              <p className="text-sm text-gray-700 leading-relaxed text-center">
-                <span className="font-bold text-emerald-600">Misu Enterprises</span> provides <span className="font-bold text-emerald-600">comprehensive manpower solutions</span> across all organizational levels. From <span className="font-bold text-emerald-600">executive leadership</span> to <span className="font-bold text-emerald-600">ground-level support</span>, we deliver <span className="font-bold text-emerald-600">qualified professionals</span> tailored to your industry needs with <span className="font-bold text-emerald-600">guaranteed compliance</span> and <span className="font-bold text-emerald-600">operational excellence</span>.
+              <p className="text-sm text-zinc-300 leading-relaxed text-center">
+                <span className="font-bold text-gradient">Misu Enterprises</span> provides <span className="font-bold text-gradient">comprehensive manpower solutions</span> across all organizational levels. From <span className="font-bold text-gradient">executive leadership</span> to <span className="font-bold text-gradient">ground-level support</span>, we deliver <span className="font-bold text-gradient">qualified professionals</span> tailored to your industry needs with <span className="font-bold text-gradient">guaranteed compliance</span> and <span className="font-bold text-gradient">operational excellence</span>.
               </p>
             </motion.div>
           </div>
@@ -159,10 +159,10 @@ export default function ManpowerCategoriesSection() {
                 initial={{ opacity: 0, x: 50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.6 + index * 0.15, ease: "easeOut" }}
-                className="group relative bg-white rounded-xl p-5 shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 hover:-translate-y-2 flex-1"
+                className="group relative bg-gradient-to-br from-zinc-900 to-zinc-800 rounded-xl p-5 shadow-lg hover:shadow-2xl border border-zinc-700 transition-all duration-300 hover:-translate-y-2 flex-1"
               >
                 <div className="absolute top-3 right-3">
-                  <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
+                  <span className="text-xs font-medium text-zinc-400 bg-zinc-800 px-2 py-1 rounded-full">
                     {category.level}
                   </span>
                 </div>
@@ -171,8 +171,8 @@ export default function ManpowerCategoriesSection() {
                   <category.icon className="w-5 h-5 text-white" />
                 </div>
                 
-                <h3 className="text-base font-semibold mb-2 text-gray-900">{category.title}</h3>
-                <p className="text-xs text-gray-600 leading-relaxed">{category.examples}</p>
+                <h3 className="text-base font-semibold mb-2 text-white">{category.title}</h3>
+                <p className="text-xs text-zinc-400 leading-relaxed">{category.examples}</p>
               </motion.div>
             ))}
           </div>
