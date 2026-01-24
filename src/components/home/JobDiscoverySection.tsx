@@ -121,8 +121,7 @@ export function JobDiscoverySection() {
                     onMouseEnter={() => setHoveredJob(job.id)}
                     onMouseLeave={() => setHoveredJob(null)}
                   >
-                    <Link
-                      to={`/jobs/${job.id}`}
+                    <div
                       className={`group block rounded-2xl p-6 shadow-lg hover:shadow-2xl border transition-all duration-300 hover:-translate-y-2 h-full relative ${
                         isHovered 
                           ? 'bg-black border-black text-white' 
@@ -189,16 +188,19 @@ export function JobDiscoverySection() {
 
                       {/* View Details Button */}
                       <div className="mt-4 pt-4 border-t border-gray-200">
-                        <div className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${
-                          isHovered ? 'text-white' : 'text-black'
-                        }`}>
+                        <Link 
+                          to={`/jobs/${job.id}`}
+                          className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${
+                            isHovered ? 'text-white' : 'text-black'
+                          }`}
+                        >
                           View Details 
                           <ArrowRight className={`w-4 h-4 transition-all duration-300 ${
                             isHovered ? 'text-emerald-400 translate-x-1' : 'text-black'
                           }`} />
-                        </div>
+                        </Link>
                       </div>
-                    </Link>
+                    </div>
                   </motion.div>
                 );
               })}
