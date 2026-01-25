@@ -14,8 +14,8 @@ import ImpactStatsSection  from "@/components/home/ImpactStatsSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import FeaturedJobsSection from "@/components/home/FeaturedJobsSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
-import { CTASection } from "@/components/home/CTASection";
-import { ESGSection } from "@/components/home/ESGSection";
+import  CTASection  from "@/components/home/CTASection";
+import  ESGSection  from "@/components/home/ESGSection";
 import { FinalCTASection } from "@/components/home/FinalCTASection";
 
 const Index = () => {
