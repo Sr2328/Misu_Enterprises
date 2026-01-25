@@ -50,7 +50,7 @@ export function Navbar() {
             <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-xl">M</span>
             </div>
-            <span className="font-bold text-xl text-foreground">MISO</span>
+            <span className="font-bold text-xl text-foreground">MISU</span>
           </Link>
 
           {/* Desktop Navigation */}

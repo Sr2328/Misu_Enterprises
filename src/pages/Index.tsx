@@ -16,7 +16,7 @@ import FeaturedJobsSection from "@/components/home/FeaturedJobsSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import  CTASection  from "@/components/home/CTASection";
 import  ESGSection  from "@/components/home/ESGSection";
-import { FinalCTASection } from "@/components/home/FinalCTASection";
+import FinalCTASection  from "@/components/home/FinalCTASection";
 
 const Index = () => {
   return (
