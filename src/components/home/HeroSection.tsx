@@ -2,6 +2,7 @@ import { motion, useMotionValue, useTransform, animate, useScroll } from "framer
 import { ArrowRight, Play, Briefcase } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import heroImage from "@/assets/hero-team.jpg";
+import mainpng from "@/assets/mainpng.jpg";
 
 const stats = [
   { value: 10000, label: "Candidates Placed", suffix: "+" },
@@ -178,7 +179,7 @@ export default function HeroSection() {
               {/* Image Container - Full Height */}
               <div className="relative w-full h-full">
                 <motion.img
-                  src={heroImage}
+                  src={mainpng}
                   alt="Professional team collaborating in modern office"
                   className={`w-full h-full object-cover transition-opacity duration-700 ${
                     imageLoaded ? 'opacity-100' : 'opacity-0'
