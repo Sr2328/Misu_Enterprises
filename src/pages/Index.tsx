@@ -10,7 +10,7 @@ import ComplianceSection from "@/components/home/ComplianceSection";
 import { JobDiscoverySection } from "@/components/home/JobDiscoverySection";
 import TrainingSection from "@/components/home/TrainingSection";
 import { SLASection } from "@/components/home/SLASection";
-import { ImpactStatsSection } from "@/components/home/ImpactStatsSection";
+import ImpactStatsSection  from "@/components/home/ImpactStatsSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import FeaturedJobsSection from "@/components/home/FeaturedJobsSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
