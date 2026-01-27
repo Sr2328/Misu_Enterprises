@@ -15,6 +15,10 @@ import { AboutHeroSection } from "@/components/About/AboutHero";
 import StatsSection from "@/components/About/AboutStats";
 import MissionVisionSection from "@/components/About/MissionAndVision";
 import IndustriesSection from "@/components/About/IndustriesServe";
+import ProcessSection from "@/components/About/ProcessSection";
+import { C } from "vitest/dist/chunks/reporters.d.BFLkQcL6.js";
+import { ComplianceSection } from "@/components/About/Compliance";
+import AboutTestimonials from "@/components/About/AboutTestimonials";
 
 const values = [
   {
@@ -129,7 +133,7 @@ const About = () => {
     <IndustriesSection/>
 
       {/* Workforce Categories */}
-      <section className="py-16 lg:py-24 bg-card">
+      {/* <section className="py-16 lg:py-24 bg-card">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -179,67 +183,13 @@ const About = () => {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
+
+
+      <ProcessSection/>
 
       {/* Compliance & Trust */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                100% Compliance
-              </span>
-              <h2 className="text-3xl font-bold mb-6">Zero Risk Workforce Partnership</h2>
-              <div className="space-y-4">
-                {complianceItems.map((item) => (
-                  <div key={item.title} className="flex items-start gap-4 bg-card rounded-xl p-4 border border-border/50">
-                    <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center flex-shrink-0">
-                      <item.icon className="w-6 h-6 text-primary-foreground" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold">{item.title}</h4>
-                      <p className="text-sm text-muted-foreground">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                SLA Commitments
-              </span>
-              <h2 className="text-3xl font-bold mb-6">Service Guarantees</h2>
-              <div className="grid gap-4">
-                {[
-                  { icon: Clock, title: "24-48 Hour Deployment", desc: "Trained workforce at your site quickly" },
-                  { icon: Award, title: "Quick Replacement", desc: "24-hour replacement guarantee" },
-                  { icon: FileCheck, title: "Monthly Reporting", desc: "Transparent performance reports" },
-                ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-4 bg-card rounded-xl p-4 border border-border/50">
-                    <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center flex-shrink-0">
-                      <item.icon className="w-6 h-6 text-primary-foreground" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold">{item.title}</h4>
-                      <p className="text-sm text-muted-foreground">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <ComplianceSection/>
 
       {/* ESG & Ethics */}
       <section className="py-16 lg:py-24 bg-card">
@@ -315,6 +265,10 @@ const About = () => {
           </div>
         </div>
       </section>
+
+
+      {/* Testimonials Section */}
+{/* <AboutTestimonials/> */}
 
       {/* Final CTA */}
       <section className="py-20 lg:py-28">

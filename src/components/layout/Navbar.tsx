@@ -58,7 +58,7 @@ export function Navbar() {
             {/* Left: Logo - White Color */}
             <Link to="/" className="flex items-center space-x-1 z-10">
               <img 
-                src="https://i.postimg.cc/76Fczxg0/unnamed-(27).png" 
+                src="https://i.postimg.cc/Tw7z2pJX/Black-and-White-Typographic-Gym-Logo-(1).png" 
                 alt="MISU ENTERPRISES Logo" 
                 className="w-12 h-12 lg:w-15 lg:h-15 object-contain brightness-0 invert"
               />
