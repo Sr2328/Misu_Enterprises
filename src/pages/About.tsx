@@ -9,6 +9,9 @@ import {
   Factory, Warehouse, Hospital, ShoppingBag, Home
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import ServingTwoWorldsSection from "@/components/About/DualPersona";
+import HeroSection from "@/components/home/HeroSection";
+import { AboutHeroSection } from "@/components/About/AboutHero";
 
 const values = [
   {
@@ -108,108 +111,10 @@ const About = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section ref={heroRef} className="gradient-hero py-20 lg:py-28">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
-            >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                About MISU Enterprises
-              </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                Your Trusted <span className="text-gradient">Workforce Partner</span> Since 2008
-              </h1>
-              <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-                For over 15 years, MISU Enterprises has been connecting businesses with reliable, trained, and compliant workforce — from top management to ground-level support staff across India.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="hero" size="lg" asChild>
-                  <Link to="/contact">
-                    <Handshake className="w-5 h-5" />
-                    Hire Manpower <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </Button>
-                <Button variant="heroOutline" size="lg" asChild>
-                  <Link to="/jobs">
-                    <Briefcase className="w-5 h-5" />
-                    Apply for Jobs
-                  </Link>
-                </Button>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
+    <AboutHeroSection/>
       {/* Dual Persona Section */}
-      <section className="py-16 lg:py-24 bg-card">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Serving <span className="text-gradient">Two Worlds</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We bridge the gap between organizations seeking manpower and individuals seeking meaningful employment.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-background rounded-2xl p-8 shadow-soft border border-border/50"
-            >
-              <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center mb-6">
-                <Building2 className="w-8 h-8 text-primary-foreground" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3">For Industries & Organizations</h3>
-              <p className="text-muted-foreground mb-6">
-                End-to-end manpower solutions with 100% compliance, rapid deployment, and dedicated account management. We handle HR so you can focus on core business.
-              </p>
-              <ul className="space-y-2">
-                {["Quick 24-48 hr deployment", "Complete compliance handling", "SLA-backed service guarantees"].map(item => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <CheckCircle2 className="w-4 h-4 text-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-background rounded-2xl p-8 shadow-soft border border-border/50"
-            >
-              <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center mb-6">
-                <Users className="w-8 h-8 text-primary-foreground" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3">For Job Seekers</h3>
-              <p className="text-muted-foreground mb-6">
-                Verified job opportunities with fair wages, safe working conditions, and career growth. We've helped 25,000+ workers find stable employment.
-              </p>
-              <ul className="space-y-2">
-                {["Verified employers only", "Fair wages & timely payments", "Free skill development training"].map(item => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <CheckCircle2 className="w-4 h-4 text-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+    
+     <ServingTwoWorldsSection/>
 
       {/* Stats */}
       <section className="py-16 bg-background">
