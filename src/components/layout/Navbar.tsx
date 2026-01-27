@@ -1,18 +1,30 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X, ChevronDown, User, Search, Phone } from "lucide-react";
 
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "Jobs", href: "/jobs" },
-  { name: "Careers", href: "/careers" },
-  { name: "Blog", href: "/blog" },
-  { name: "Portfolio", href: "/portfolio" },
-  { name: "Contact", href: "/contact" },
+const mainNavLinks = [
+  { name: "HOME", href: "/" },
+  { name: "ABOUT", href: "/about" },
+  { name: "SERVICES", href: "/services" },
+  { name: "CONTACT", href: "/contact" },
+];
+
+const dropdownSections = [
+  {
+    title: "MORE",
+    items: [
+      { name: "PORTFOLIO", href: "/portfolio" },
+      { name: "JOBS", href: "/jobs" },
+    ],
+  },
+  {
+    title: "RESOURCES",
+    items: [
+      { name: "BLOG", href: "/blog" },
+      { name: "CAREERS", href: "/careers" },
+    ],
+  },
 ];
 
 export function Navbar() {
@@ -37,75 +49,151 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-card/95 backdrop-blur-md shadow-soft"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md`}
     >
       <nav className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">M</span>
+        {/* First Row - Logo, Design Shape, Phone */}
+        <div className="flex items-center justify-between py-2 lg:py-2.5 relative">
+          {/* Left: Logo */}
+          <Link to="/" className="flex items-center space-x-2 z-10">
+            <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-sm">
+              <svg
+                className="w-4 h-4 lg:w-4 lg:h-4 text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
             </div>
-            <span className="font-bold text-xl text-foreground">MISU</span>
+            <span className="font-bold text-base lg:text-lg text-gray-800 tracking-tight">
+            MISU ENTERPRISES
+            </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
-            {navLinks.slice(0, 6).map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  location.pathname === link.href
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="relative group">
-              <button className="px-4 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-200 flex items-center gap-1">
-                More <ChevronDown className="w-4 h-4" />
-              </button>
-              <div className="absolute top-full right-0 mt-2 w-40 bg-card rounded-xl shadow-card border border-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                {navLinks.slice(6).map((link) => (
-                  <Link
-                    key={link.name}
-                    to={link.href}
-                    className="block px-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted first:rounded-t-xl last:rounded-b-xl transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
+          {/* Center: Decorative Slanted Shape - Desktop Only */}
+          <div className="hidden lg:block absolute left-1/2 top-0 transform -translate-x-1/2 h-full">
+            <div
+              className="h-full w-72  bg-emerald-500"
+              style={{
+                clipPath: "polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)",
+              }}
+            />
           </div>
 
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center space-x-3">
-            <Button variant="ghost" size="sm" asChild>
-              <Link to="/auth">Sign In</Link>
-            </Button>
-            <Button variant="hero" size="sm" asChild>
-              <Link to="/jobs">Find Jobs</Link>
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+          {/* Right: Phone Number */}
+          <a
+            href="tel:9808123456"
+            className="flex items-center space-x-1.5 lg:space-x-2 px-2.5 py-1.5 lg:px-3 lg:py-1.5 rounded-full bg-white border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-50 transition-colors z-10"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+            <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-emerald-500 flex items-center justify-center">
+              <Phone className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-white" />
+            </div>
+            <span className="text-xs lg:text-sm font-bold">9808123456</span>
+          </a>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Second Row - Navigation Links and Icons */}
+        <div className="border-t border-gray-100">
+          <div className="flex items-center justify-between h-10 lg:h-11">
+            {/* Left: Desktop Navigation Links */}
+            <div className="hidden lg:flex items-center space-x-1">
+              {mainNavLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={`px-4 py-1.5 rounded-sm text-sm font-semibold transition-all duration-200 ${
+                    location.pathname === link.href
+                      ? "text-white bg-emerald-500"
+                      : "text-gray-700 hover:text-emerald-600 hover:bg-emerald-50"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+
+              {/* Dropdown Menu */}
+              <div className="relative group">
+                <button className="px-4 py-1.5 rounded-sm text-sm font-semibold text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-200 flex items-center gap-1.5">
+                 MORE{" "}
+                  <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
+                </button>
+                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+                  <div className="p-2">
+                    {dropdownSections.map((section, sectionIdx) => (
+                      <div
+                        key={section.title}
+                        className={
+                          sectionIdx > 0
+                            ? "mt-2 pt-2 border-t border-gray-100"
+                            : ""
+                        }
+                      >
+                        <div className="px-3 py-1.5 text-xs font-bold text-gray-400 uppercase tracking-wider">
+                          {section.title}
+                        </div>
+                        {section.items.map((link) => (
+                          <Link
+                            key={link.name}
+                            to={link.href}
+                            className={`block px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
+                              location.pathname === link.href
+                                ? "text-emerald-600 bg-emerald-50"
+                                : "text-gray-700 hover:text-emerald-600 hover:bg-emerald-50"
+                            }`}
+                          >
+                            {link.name}
+                          </Link>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile: Logo Text (simplified) */}
+            <div className="lg:hidden">
+              <span className="text-sm font-semibold text-gray-600">Menu</span>
+            </div>
+
+            {/* Right: Action Icons */}
+            <div className="flex items-center space-x-1 lg:space-x-2">
+              {/* Search Icon */}
+              <button className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors">
+                <Search className="w-4 h-4 lg:w-5 lg:h-5 text-gray-700" />
+              </button>
+
+              {/* Sign In Icon */}
+              <Link
+                to="/auth"
+                className="hidden lg:flex p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+                title="Sign In"
+              >
+                <User className="w-4 h-4 lg:w-5 lg:h-5 text-gray-700" />
+              </Link>
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="lg:hidden p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                {isOpen ? (
+                  <X className="w-5 h-5 text-gray-700" />
+                ) : (
+                  <Menu className="w-5 h-5 text-gray-700" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -113,29 +201,55 @@ export function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden"
+              className="lg:hidden overflow-hidden border-t border-gray-100"
             >
-              <div className="py-4 space-y-2 border-t border-border">
-                {navLinks.map((link) => (
+              <div className="py-4 space-y-1">
+                {/* Main Links */}
+                {mainNavLinks.map((link) => (
                   <Link
                     key={link.name}
                     to={link.href}
-                    className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                    className={`block px-4 py-3 rounded-lg text-sm font-semibold transition-colors ${
                       location.pathname === link.href
-                        ? "text-primary bg-primary/10"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                        ? "text-white bg-emerald-500"
+                        : "text-gray-700 hover:text-emerald-600 hover:bg-emerald-50"
                     }`}
                   >
                     {link.name}
                   </Link>
                 ))}
-                <div className="pt-4 space-y-2">
-                  <Button variant="outline" className="w-full" asChild>
-                    <Link to="/auth">Sign In</Link>
-                  </Button>
-                  <Button variant="hero" className="w-full" asChild>
-                    <Link to="/jobs">Find Jobs</Link>
-                  </Button>
+
+                {/* Dropdown Sections */}
+                {dropdownSections.map((section) => (
+                  <div key={section.title} className="pt-2">
+                    <div className="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider">
+                      {section.title}
+                    </div>
+                    {section.items.map((link) => (
+                      <Link
+                        key={link.name}
+                        to={link.href}
+                        className={`block px-4 py-3 rounded-lg text-sm font-semibold transition-colors ${
+                          location.pathname === link.href
+                            ? "text-white bg-emerald-500"
+                            : "text-gray-700 hover:text-emerald-600 hover:bg-emerald-50"
+                        }`}
+                      >
+                        {link.name}
+                      </Link>
+                    ))}
+                  </div>
+                ))}
+
+                {/* Mobile Sign In */}
+                <div className="pt-4 border-t border-gray-100">
+                  <Link
+                    to="/auth"
+                    className="flex items-center justify-center space-x-2 px-4 py-3 rounded-lg bg-emerald-500 text-white hover:bg-emerald-600 transition-colors"
+                  >
+                    <User className="w-5 h-5" />
+                    <span className="font-semibold">Sign In</span>
+                  </Link>
                 </div>
               </div>
             </motion.div>
