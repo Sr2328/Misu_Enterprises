@@ -5,7 +5,7 @@ import { Building2, Users, CheckCircle2 } from 'lucide-react';
 const ServingTwoWorldsSection = () => {
   return (
     <section className="py-16 lg:py-24 bg-card">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="container mx-auto px-3 lg:px-6">
         {/* Header Row - Heading Left, Subheading Right */}
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
           <motion.div

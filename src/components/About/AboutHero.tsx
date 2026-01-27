@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Handshake, ArrowRight, Briefcase } from "lucide-react";
-import heroabout from  "@/assets/heroabout.mp4";
+import hiringabout from  "@/assets/hringabout.mp4";
 
 export function AboutHeroSection() {
   const heroRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true, amount: 0.3 });
 
   return (
-    <section ref={heroRef} className="relative min-h-[600px] lg:min-h-[700px] flex items-center overflow-hidden">
+    <section ref={heroRef} className="relative min-h-[500px] lg:min-h-[600px] flex items-center overflow-hidden">
       {/* Background Video - Desktop Only */}
       <video
         autoPlay
@@ -18,13 +18,13 @@ export function AboutHeroSection() {
         muted
         playsInline
         preload="auto"
-        className="hidden lg:block absolute inset-0 w-full h-full object-cover"
+        className="hidden lg:block absolute inset-0 w-full h-[600px] object-cover"
         poster="/hero-bg.jpg"
         onLoadedData={(e) => {
           (e.target as HTMLVideoElement).play().catch(err => console.log("Video autoplay failed:", err));
         }}
       >
-        <source src={heroabout} type="video/mp4" />
+        <source src={hiringabout} type="video/mp4" />
         <source src="/hero-video.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
