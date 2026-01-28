@@ -8,6 +8,7 @@ const esgPillars = [
     value: "8+",
     label: "years",
     description: "Delivering employment solutions and workforce management.",
+    isDark: true,
   },
   {
     icon: Scale,
@@ -26,6 +27,7 @@ const esgPillars = [
     value: "99%",
     label: "satisfaction",
     description: "Consistently deliver quality workforce solutions.",
+    isDark: true,
   }
 ];
 

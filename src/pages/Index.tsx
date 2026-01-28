@@ -38,7 +38,7 @@ const Index = () => {
         {/* Job & Talent */}
         <JobDiscoverySection />
         <TrainingSection />
-        <FeaturedJobsSection />
+        {/* <FeaturedJobsSection /> */}
 
         {/* Proof & Performance */}
         <SLASection />

@@ -142,9 +142,9 @@ export function Navbar() {
             </div>
 
             {/* Mobile: Menu Text */}
-            <div className="lg:hidden">
+            {/* <div className="lg:hidden">
               <span className="text-sm font-semibold text-gray-300">Menu</span>
-            </div>
+            </div> */}
 
             {/* Right: Action Icons */}
             <div className="flex items-center space-x-1 lg:space-x-2">

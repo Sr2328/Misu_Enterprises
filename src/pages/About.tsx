@@ -19,6 +19,7 @@ import ProcessSection from "@/components/About/ProcessSection";
 import { C } from "vitest/dist/chunks/reporters.d.BFLkQcL6.js";
 import { ComplianceSection } from "@/components/About/Compliance";
 import AboutTestimonials from "@/components/About/AboutTestimonials";
+import ValuesSection from "@/components/About/OurValues";
 
 const values = [
   {
@@ -231,44 +232,10 @@ const About = () => {
       </section>
 
       {/* Values */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              Our Values
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold">What Drives Us</h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-card rounded-2xl p-6 text-center shadow-soft border border-border/50"
-              >
-                <div className="w-14 h-14 rounded-xl gradient-primary flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="w-7 h-7 text-primary-foreground" />
-                </div>
-                <h3 className="font-semibold text-lg mb-2">{value.title}</h3>
-                <p className="text-muted-foreground text-sm">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <ValuesSection/>
 
       {/* Testimonials Section */}
-{/* <AboutTestimonials/> */}
+<AboutTestimonials/>
 
       {/* Final CTA */}
       <section className="py-20 lg:py-28">
