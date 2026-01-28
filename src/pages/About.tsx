@@ -1,289 +1,62 @@
 import { Layout } from "@/components/layout/Layout";
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { 
-  ArrowRight, Target, Eye, Heart, Users, Award, Globe, Building2, 
-  Briefcase, Handshake, ShieldCheck, Clock, CheckCircle2, FileCheck,
-  Calculator, GraduationCap, Leaf, Scale, Phone, Mail, MapPin,
-  Factory, Warehouse, Hospital, ShoppingBag, Home
-} from "lucide-react";
-import { Link } from "react-router-dom";
-import ServingTwoWorldsSection from "@/components/About/DualPersona";
-import HeroSection from "@/components/home/HeroSection";
+import { useInView } from "framer-motion";
+
+// Components / Sections
 import { AboutHeroSection } from "@/components/About/AboutHero";
+import ServingTwoWorldsSection from "@/components/About/DualPersona";
 import StatsSection from "@/components/About/AboutStats";
 import MissionVisionSection from "@/components/About/MissionAndVision";
 import IndustriesSection from "@/components/About/IndustriesServe";
 import ProcessSection from "@/components/About/ProcessSection";
-import { C } from "vitest/dist/chunks/reporters.d.BFLkQcL6.js";
 import { ComplianceSection } from "@/components/About/Compliance";
-import AboutTestimonials from "@/components/About/AboutTestimonials";
+import ESGSection from "@/components/About/ESG&Complimance";
 import ValuesSection from "@/components/About/OurValues";
-
-const values = [
-  {
-    icon: Target,
-    title: "Excellence",
-    description: "We strive for excellence in every placement, ensuring quality workforce delivery.",
-  },
-  {
-    icon: Heart,
-    title: "Integrity",
-    description: "Transparent practices, honest dealings, and ethical employment for all.",
-  },
-  {
-    icon: Users,
-    title: "Partnership",
-    description: "We become your extended HR team, not just another vendor.",
-  },
-  {
-    icon: Globe,
-    title: "Diversity",
-    description: "Inclusive hiring practices celebrating workforce diversity.",
-  },
-];
-
-const stats = [
-  { value: "15+", label: "Years of Trust" },
-  { value: "25,000+", label: "Workers Deployed" },
-  { value: "500+", label: "Client Partners" },
-  { value: "98%", label: "Client Retention" },
-];
-
-const industries = [
-  { icon: Factory, name: "Manufacturing" },
-  { icon: Building2, name: "Corporate" },
-  { icon: Warehouse, name: "Warehousing" },
-  { icon: Hospital, name: "Healthcare" },
-  { icon: ShoppingBag, name: "Retail" },
-  { icon: Home, name: "Residential" },
-];
-
-const workforceCategories = [
-  "Top Management & Executives",
-  "Supervisors & Team Leaders",
-  "Skilled Workers & Technicians",
-  "Semi-Skilled Operators",
-  "Security Personnel",
-  "Housekeeping Staff",
-  "Pantry & Cafeteria",
-  "Drivers & Support Staff"
-];
-
-const processSteps = [
-  {
-    step: "01",
-    title: "Requirement Analysis",
-    description: "We understand your staffing needs, site conditions, and workforce specifications."
-  },
-  {
-    step: "02",
-    title: "Candidate Sourcing",
-    description: "We tap into our verified pool of 25,000+ workers and recruit matching profiles."
-  },
-  {
-    step: "03",
-    title: "Verification & Training",
-    description: "Background checks, police verification, and SOP-based training for your requirements."
-  },
-  {
-    step: "04",
-    title: "Deployment & Onboarding",
-    description: "Trained workforce deployed to your site within 24-48 hours with full documentation."
-  },
-  {
-    step: "05",
-    title: "Management & Support",
-    description: "Ongoing attendance, payroll, compliance, and performance management."
-  }
-];
-
-const complianceItems = [
-  { icon: FileCheck, title: "Labour Law Compliance", desc: "Contract Labour Act, Minimum Wages, Industrial Disputes" },
-  { icon: Calculator, title: "Statutory Benefits", desc: "PF, ESI, Gratuity, Bonus Processing" },
-  { icon: ShieldCheck, title: "GST Billing", desc: "Transparent, audit-ready invoicing" },
-];
-
-const esgPillars = [
-  { icon: Heart, title: "Fair Wages", desc: "Timely payments, dignified work conditions" },
-  { icon: Scale, title: "Ethical Practices", desc: "Zero exploitation, worker rights protection" },
-  { icon: GraduationCap, title: "Skill Development", desc: "Free training and career growth programs" },
-  { icon: Leaf, title: "Sustainability", desc: "Paperless operations, eco-friendly practices" },
-];
+import AboutTestimonials from "@/components/About/AboutTestimonials";
+import AboutFAQ from "@/components/About/AboutFAQ";
+import AboutCTA from "@/components/About/AboutCTA";
 
 const About = () => {
   const heroRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true });
-  
+
   return (
     <Layout>
-      {/* Hero Section */}
-    <AboutHeroSection/>
-      {/* Dual Persona Section */}
-    
-     <ServingTwoWorldsSection/>
+      {/* ================= Hero Section ================= */}
+      <AboutHeroSection/>
 
-      {/* Stats */}
-     <StatsSection/>
+      {/* ================= Dual Persona / Approach ================= */}
+      <ServingTwoWorldsSection />
 
-      {/* Mission & Vision */}
-     <MissionVisionSection/>
+      {/* ================= Stats / Achievements ================= */}
+      <StatsSection />
 
-      {/* Industries We Serve */}
-    <IndustriesSection/>
+      {/* ================= Mission & Vision ================= */}
+      <MissionVisionSection />
 
-      {/* Workforce Categories */}
-      {/* <section className="py-16 lg:py-24 bg-card">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                Complete Workforce Spectrum
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                From <span className="text-gradient">Boardroom to Floor</span>
-              </h2>
-              <p className="text-muted-foreground mb-8">
-                We cover the entire workforce spectrum — from C-suite executives to operational staff. Whatever your manpower need, we have the right talent.
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                {workforceCategories.map((category) => (
-                  <div key={category} className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{category}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+      {/* ================= Industries We Serve ================= */}
+      <IndustriesSection />
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-background rounded-3xl p-8 shadow-card border border-border/50"
-            >
-              <h3 className="text-xl font-bold mb-6">Our Deployment Process</h3>
-              <div className="space-y-6">
-                {processSteps.map((step, index) => (
-                  <div key={step.step} className="flex gap-4">
-                    <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center flex-shrink-0 text-primary-foreground font-bold text-sm">
-                      {step.step}
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-1">{step.title}</h4>
-                      <p className="text-sm text-muted-foreground">{step.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section> */}
+      {/* ================= Workforce & Deployment Process ================= */}
+      <ProcessSection />
 
+      {/* ================= Compliance & Trust ================= */}
+      <ComplianceSection />
 
-      <ProcessSection/>
+      {/* ================= ESG & Ethics ================= */}
+      <ESGSection />
 
-      {/* Compliance & Trust */}
-      <ComplianceSection/>
+      {/* ================= Our Values ================= */}
+      <ValuesSection />
 
-      {/* ESG & Ethics */}
-      <section className="py-16 lg:py-24 bg-card">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              ESG & Ethical Employment
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Responsible Workforce Partner</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              We believe in creating shared value for clients, workers, and society through ethical practices.
-            </p>
-          </motion.div>
+      {/* ================= Testimonials ================= */}
+      <AboutTestimonials />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {esgPillars.map((pillar, index) => (
-              <motion.div
-                key={pillar.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-background rounded-2xl p-6 text-center shadow-soft border border-border/50"
-              >
-                <div className="w-14 h-14 rounded-xl gradient-primary flex items-center justify-center mx-auto mb-4">
-                  <pillar.icon className="w-7 h-7 text-primary-foreground" />
-                </div>
-                <h3 className="font-semibold text-lg mb-2">{pillar.title}</h3>
-                <p className="text-muted-foreground text-sm">{pillar.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ================= FAQ ================= */}
+      <AboutFAQ />
 
-      {/* Values */}
-      <ValuesSection/>
-
-      {/* Testimonials Section */}
-<AboutTestimonials/>
-
-      {/* Final CTA */}
-      <section className="py-20 lg:py-28">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative rounded-3xl overflow-hidden"
-          >
-            <div className="absolute inset-0 gradient-primary" />
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iNCIvPjwvZz48L2c+PC9zdmc+')] opacity-30" />
-
-            <div className="relative z-10 py-16 lg:py-20 px-6 lg:px-12 text-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
-                Ready to Partner With Us?
-              </h2>
-              <p className="text-lg text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
-                Let's discuss how MISU can solve your workforce challenges or help you find your next opportunity.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="xl" 
-                  className="bg-card text-primary hover:bg-card/90 shadow-lg"
-                  asChild
-                >
-                  <Link to="/contact">
-                    <Handshake className="w-5 h-5" />
-                    Hire Manpower
-                  </Link>
-                </Button>
-                <Button 
-                  size="xl" 
-                  variant="outline"
-                  className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground"
-                  asChild
-                >
-                  <Link to="/jobs">
-                    <Briefcase className="w-5 h-5" />
-                    Apply for Jobs
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* ================= Final CTA ================= */}
+      <AboutCTA />
     </Layout>
   );
 };

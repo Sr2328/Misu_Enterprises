@@ -101,7 +101,7 @@ const ValuesSection = () => {
                     <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3">
                       Excellence
                     </h3>
-                    <p className="text-white/95 text-sm lg:text-base leading-relaxed">
+                    <p className="text-white/95 text-sm lg:text-xsS leading-relaxed">
                       We strive for excellence in every placement, ensuring quality workforce delivery. Our commitment to superior service means we thoroughly vet, train, and support every worker we place, ensuring they meet and exceed your expectations. Excellence isn't just a goal—it's our standard.
                     </p>
                   </div>
@@ -158,7 +158,7 @@ const ValuesSection = () => {
                 <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2">
                   Partnership
                 </h3>
-                <p className="text-gray-600 text-xs lg:text-sm leading-relaxed">
+                <p className="text-gray-600 text-xl lg:text-lg leading-relaxed">
                   We become your extended HR team, not just another vendor.
                 </p>
               </div>
