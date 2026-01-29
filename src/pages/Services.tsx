@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import {management} from "@/assets/management.png"
 
 interface Service {
   id: string;
@@ -427,8 +428,13 @@ const Services = () => {
                             </>
                           ) : (
                             <div className="w-full h-full flex items-center justify-center">
-                              <IconComponent className="w-28 h-28 text-primary/30" />
-                            </div>
+  <img
+    src="{management}"
+    alt="Recruitment Icon"
+    className="w-28 h-28 opacity-30"
+  />
+</div>
+
                           )}
                           
                           {/* Icon Badge */}
