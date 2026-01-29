@@ -109,59 +109,51 @@ const AdminDashboard = () => {
     { icon: Settings, label: "Settings", href: "/admin/settings" },
   ];
 
-  const statCards = [
-    { label: "Active Jobs", value: stats.totalJobs, icon: Briefcase, gradient: 'from-primary to-primary/80', subtitle: "All posted jobs" },
-    { label: "Applications", value: stats.totalApplications, icon: FileText, gradient: 'from-primary/90 to-primary/70', subtitle: "Total received" },
-    { label: "Total Users", value: stats.totalUsers, icon: Users, gradient: 'from-primary/80 to-primary/60', subtitle: "Registered users" },
-    { label: "New Inquiries", value: stats.pendingInquiries, icon: MessageSquare, gradient: 'from-amber-500 to-amber-400', subtitle: "Unread messages" },
-    { label: "Subscribers", value: stats.subscribers, icon: Mail, gradient: 'from-primary/70 to-primary/50', subtitle: "Newsletter" },
-    { label: "Blog Posts", value: stats.blogPosts, icon: Newspaper, gradient: 'from-primary/60 to-primary/40', subtitle: "Published" },
-  ];
-
   return (
-    <div className="min-h-screen bg-secondary/30">
+    <div className="min-h-screen bg-gray-50">
       {/* Mobile Header */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-card border-b border-border px-4 py-3 flex items-center justify-between">
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(!sidebarOpen)}>
             {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </Button>
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold">M</span>
+            <div className="w-8 h-8 rounded-lg bg-green-700 flex items-center justify-center">
+              <span className="text-white font-bold">M</span>
             </div>
-            <span className="font-bold">Admin</span>
+            <span className="font-bold">MISO Admin</span>
           </Link>
         </div>
-        <Button variant="ghost" size="icon" className="relative">
-          <Bell className="w-5 h-5" />
-          {stats.pendingInquiries > 0 && (
-            <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-destructive text-destructive-foreground text-xs flex items-center justify-center">
-              {stats.pendingInquiries}
-            </span>
-          )}
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" size="icon" className="relative">
+            <Bell className="w-5 h-5" />
+            {stats.pendingInquiries > 0 && (
+              <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">
+                {stats.pendingInquiries}
+              </span>
+            )}
+          </Button>
+          <Button variant="ghost" size="icon">
+            <Mail className="w-5 h-5" />
+          </Button>
+        </div>
       </header>
 
       {/* Sidebar */}
-      <aside className={`fixed inset-y-0 left-0 z-40 w-64 bg-card border-r border-border transform transition-transform duration-300 lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <aside className={`fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-gray-200 transform transition-transform duration-300 lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex flex-col h-full">
           {/* Logo */}
-          <div className="p-6 border-b border-border hidden lg:block">
+          <div className="p-6 border-b border-gray-200">
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">M</span>
+              <div className="w-12 h-12 rounded-xl bg-green-700 flex items-center justify-center">
+                <span className="text-white font-bold text-xl">M</span>
               </div>
-              <div>
-                <span className="font-bold text-lg">MISO Admin</span>
-                <p className="text-xs text-muted-foreground">Dashboard</p>
-              </div>
+              <span className="font-bold text-lg">MISO Admin</span>
             </Link>
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 p-4 space-y-1 overflow-y-auto mt-16 lg:mt-0">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider px-4 mb-3">Menu</p>
+          <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
             {navItems.map((item) => {
               const isActive = location.pathname === item.href;
               return (
@@ -171,32 +163,31 @@ const AdminDashboard = () => {
                   onClick={() => setSidebarOpen(false)}
                   className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                     isActive 
-                      ? 'bg-primary text-primary-foreground font-medium shadow-md' 
-                      : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                      ? 'bg-green-700 text-white font-medium' 
+                      : 'text-gray-600 hover:bg-gray-100'
                   }`}
                 >
                   <item.icon className="w-5 h-5" />
                   <span>{item.label}</span>
-                  {isActive && <ChevronRight className="w-4 h-4 ml-auto" />}
                 </Link>
               );
             })}
           </nav>
 
-          {/* User */}
-          <div className="p-4 border-t border-border">
-            <div className="flex items-center gap-3 p-3 rounded-xl bg-muted/50">
-              <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
-                <UserCheck className="w-5 h-5 text-primary-foreground" />
+          {/* User Section */}
+          <div className="p-4 border-t border-gray-200">
+            <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
+              <div className="w-10 h-10 rounded-full bg-green-700 flex items-center justify-center">
+                <UserCheck className="w-5 h-5 text-white" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium truncate">{user?.email}</p>
-                <p className="text-xs text-muted-foreground">Administrator</p>
+                <p className="text-xs text-gray-500">Administrator</p>
               </div>
             </div>
             <Button 
               variant="ghost" 
-              className="w-full mt-2 justify-start gap-3 text-muted-foreground hover:text-destructive"
+              className="w-full mt-2 justify-start gap-3 text-gray-600 hover:text-red-600"
               onClick={handleSignOut}
             >
               <LogOut className="w-4 h-4" /> Sign Out
@@ -216,126 +207,410 @@ const AdminDashboard = () => {
       {/* Main Content */}
       <main className="lg:ml-64 pt-16 lg:pt-0">
         {/* Desktop Header */}
-        <header className="hidden lg:flex items-center justify-between p-6 border-b border-border bg-card">
+        <header className="hidden lg:flex items-center justify-between p-6 bg-white border-b border-gray-200">
           <div>
             <h1 className="text-2xl font-bold">Dashboard</h1>
-            <p className="text-muted-foreground">Welcome back! Here's what's happening.</p>
+            <p className="text-gray-500">{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
           </div>
           <div className="flex items-center gap-4">
             <div className="relative">
               <Input placeholder="Search..." className="w-64 pl-10" />
-              <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             </div>
-            <Button variant="ghost" size="icon" className="relative">
-              <Bell className="w-5 h-5" />
+            <Button variant="ghost" size="icon" className="rounded-full relative">
+              <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                <Bell className="w-5 h-5 text-gray-600" />
+              </div>
               {stats.pendingInquiries > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-destructive text-destructive-foreground text-xs flex items-center justify-center">
+                <span className="absolute top-0 right-0 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">
                   {stats.pendingInquiries}
                 </span>
               )}
             </Button>
+            <Button variant="ghost" size="icon" className="rounded-full">
+              <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                <Mail className="w-5 h-5 text-gray-600" />
+              </div>
+            </Button>
+            <div className="flex items-center gap-3 pl-4 border-l border-gray-200">
+              <div className="text-right">
+                <p className="text-sm font-medium">{user?.email?.split('@')[0] || 'Admin'}</p>
+                <p className="text-xs text-gray-500">Admin Officer</p>
+              </div>
+              <div className="w-10 h-10 rounded-full bg-green-700 flex items-center justify-center">
+                <span className="text-white font-semibold">{user?.email?.charAt(0).toUpperCase() || 'A'}</span>
+              </div>
+            </div>
           </div>
         </header>
 
         {/* Content */}
         <div className="p-4 lg:p-6 space-y-6">
-          {/* Stats Grid - Modern Green Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-            {statCards.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className={`relative overflow-hidden rounded-2xl p-6 bg-gradient-to-br ${stat.gradient} text-primary-foreground shadow-lg`}
-              >
-                <div className="flex items-start justify-between">
-                  <div>
-                    <p className="text-primary-foreground/80 text-sm font-medium">{stat.label}</p>
-                    <h3 className="text-4xl font-bold mt-2">{stat.value}</h3>
-                    <p className="text-primary-foreground/70 text-xs mt-1">{stat.subtitle}</p>
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                    <ArrowUpRight className="w-5 h-5" />
-                  </div>
+          {/* Top Stats Grid - 2x2 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+            {/* Total Jobs - Dark Green */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-gradient-to-br from-green-800 to-green-900 text-white rounded-2xl p-6 relative overflow-hidden"
+            >
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
+                  <Briefcase className="w-6 h-6" />
                 </div>
-                {/* Decorative circles */}
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-white/10" />
-                <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-white/5" />
-              </motion.div>
-            ))}
+                <p className="text-white/80 text-sm mb-2">Total Jobs</p>
+                <h3 className="text-4xl font-bold mb-1">{stats.totalJobs}</h3>
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-1 rounded-full bg-green-400 text-green-900 text-xs font-medium">
+                    Active
+                  </span>
+                  <span className="text-white/60 text-xs">Job postings</span>
+                </div>
+              </div>
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-white/10" />
+              <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-white/5" />
+            </motion.div>
+
+            {/* Total Applications */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200"
+            >
+              <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                <FileText className="w-6 h-6 text-gray-600" />
+              </div>
+              <p className="text-gray-500 text-sm mb-2">Total Applications</p>
+              <h3 className="text-4xl font-bold mb-1">{stats.totalApplications}</h3>
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-1 rounded-full bg-green-100 text-green-700 text-xs font-medium">
+                  Received
+                </span>
+                <span className="text-gray-400 text-xs">Job applications</span>
+              </div>
+            </motion.div>
+
+            {/* Total Users */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200"
+            >
+              <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-gray-600" />
+              </div>
+              <p className="text-gray-500 text-sm mb-2">Total Users</p>
+              <h3 className="text-4xl font-bold mb-1">{stats.totalUsers}</h3>
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-medium">
+                  Registered
+                </span>
+                <span className="text-gray-400 text-xs">User accounts</span>
+              </div>
+            </motion.div>
+
+            {/* Total Blog Posts */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200"
+            >
+              <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                <Newspaper className="w-6 h-6 text-gray-600" />
+              </div>
+              <p className="text-gray-500 text-sm mb-2">Total Blog Posts</p>
+              <h3 className="text-4xl font-bold mb-1">{stats.blogPosts}</h3>
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-medium">
+                  Published
+                </span>
+                <span className="text-gray-400 text-xs">Blog articles</span>
+              </div>
+            </motion.div>
           </div>
 
-          {/* Quick Actions */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="bg-card rounded-2xl p-6 shadow-sm border border-border"
-          >
-            <h2 className="text-lg font-semibold mb-4">Quick Actions</h2>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              <Link to="/admin/jobs">
-                <Button variant="outline" className="w-full h-auto py-4 flex flex-col gap-2">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Briefcase className="w-5 h-5 text-primary" />
-                  </div>
-                  <span className="text-sm">Post New Job</span>
-                </Button>
-              </Link>
-              <Link to="/admin/blog">
-                <Button variant="outline" className="w-full h-auto py-4 flex flex-col gap-2">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Newspaper className="w-5 h-5 text-primary" />
-                  </div>
-                  <span className="text-sm">Write Blog Post</span>
-                </Button>
-              </Link>
-              <Link to="/admin/applications">
-                <Button variant="outline" className="w-full h-auto py-4 flex flex-col gap-2">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Eye className="w-5 h-5 text-primary" />
-                  </div>
-                  <span className="text-sm">View Applications</span>
-                </Button>
-              </Link>
-              <Link to="/admin/inquiries">
-                <Button variant="outline" className="w-full h-auto py-4 flex flex-col gap-2">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Mail className="w-5 h-5 text-primary" />
-                  </div>
-                  <span className="text-sm">Check Inquiries</span>
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* Recent Activity */}
-          <div className="grid lg:grid-cols-2 gap-6">
+          {/* Bottom Section */}
+          <div className="grid lg:grid-cols-3 gap-6">
+            {/* Application Activity Chart - Takes 2 columns */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="bg-card rounded-2xl p-6 shadow-sm border border-border"
+              className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-gray-200"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-lg font-semibold">Application Activity</h2>
+                  <p className="text-sm text-gray-500">Track job application trends</p>
+                </div>
+                <select className="px-4 py-2 rounded-lg border border-gray-200 text-sm">
+                  <option>This year</option>
+                  <option>Last year</option>
+                </select>
+              </div>
+              
+              {/* Bar Chart - Using Applications Data */}
+              <div className="h-64 flex items-end gap-4 lg:gap-6">
+                {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'].map((month, index) => {
+                  const monthApplications = recentApplications.filter(app => {
+                    const appMonth = new Date(app.applied_at).getMonth();
+                    return appMonth === index;
+                  }).length;
+                  const maxHeight = 5;
+                  const height = monthApplications > 0 ? (monthApplications / maxHeight) * 80 + 20 : 15;
+                  
+                  return (
+                    <div key={month} className="flex-1 flex flex-col items-center gap-2">
+                      <div className="w-full flex flex-col items-center gap-1">
+                        <div className="w-full h-52 flex items-end justify-center gap-1">
+                          <div 
+                            className="w-2/5 bg-gradient-to-t from-green-800 to-green-700 rounded-t-lg transition-all duration-500"
+                            style={{ height: `${height}%` }}
+                          />
+                          <div 
+                            className="w-2/5 bg-gradient-to-t from-green-500 to-green-400 rounded-t-lg transition-all duration-500"
+                            style={{ height: `${height * 0.85}%` }}
+                          />
+                        </div>
+                      </div>
+                      <span className="text-xs text-gray-500 font-medium">{month}</span>
+                    </div>
+                  );
+                })}
+              </div>
+              
+              {/* Legend */}
+              <div className="flex items-center justify-center gap-6 mt-6 pt-4 border-t border-gray-100">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-green-700" />
+                  <span className="text-sm text-gray-600">Applications Received</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-green-400" />
+                  <span className="text-sm text-gray-600">Applications Reviewed</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Column - Stats Distribution */}
+            <div className="space-y-6">
+              {/* Content Statistics */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="bg-gradient-to-br from-gray-100 to-gray-50 rounded-2xl p-6 shadow-sm"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <h2 className="text-lg font-semibold">Content Statistics</h2>
+                    <p className="text-sm text-gray-500">Overview of platform content</p>
+                  </div>
+                  <select className="px-3 py-1 rounded-lg border border-gray-200 text-sm bg-white">
+                    <option>Today</option>
+                    <option>This Week</option>
+                    <option>This Month</option>
+                  </select>
+                </div>
+
+                {/* Pie Chart */}
+                <div className="flex items-center justify-center mb-6">
+                  <div className="relative w-48 h-48">
+                    <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                      {(() => {
+                        const total = stats.totalJobs + stats.totalApplications + stats.blogPosts;
+                        if (total === 0) return <circle cx="50" cy="50" r="45" fill="#e5e7eb" />;
+                        
+                        const segments = [
+                          { value: stats.totalJobs, color: '#166534' },
+                          { value: stats.totalApplications, color: '#16a34a' },
+                          { value: stats.blogPosts, color: '#22c55e' }
+                        ];
+                        
+                        let currentAngle = 0;
+                        return segments.map((segment, index) => {
+                          const percentage = (segment.value / total) * 100;
+                          const angle = (percentage / 100) * 360;
+                          const largeArc = angle > 180 ? 1 : 0;
+                          
+                          const startX = 50 + 45 * Math.cos((currentAngle * Math.PI) / 180);
+                          const startY = 50 + 45 * Math.sin((currentAngle * Math.PI) / 180);
+                          const endX = 50 + 45 * Math.cos(((currentAngle + angle) * Math.PI) / 180);
+                          const endY = 50 + 45 * Math.sin(((currentAngle + angle) * Math.PI) / 180);
+                          
+                          currentAngle += angle;
+                          
+                          return (
+                            <path
+                              key={index}
+                              d={`M 50 50 L ${startX} ${startY} A 45 45 0 ${largeArc} 1 ${endX} ${endY} Z`}
+                              fill={segment.color}
+                              stroke="white"
+                              strokeWidth="0.5"
+                            />
+                          );
+                        });
+                      })()}
+                      <circle cx="50" cy="50" r="25" fill="white" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Categories */}
+                <div className="space-y-3">
+                  {[
+                    { label: 'Jobs', value: stats.totalJobs, color: { bg: 'bg-green-100', text: 'text-green-700', badge: 'bg-green-800' } },
+                    { label: 'Applications', value: stats.totalApplications, color: { bg: 'bg-green-100', text: 'text-green-700', badge: 'bg-green-600' } },
+                    { label: 'Blog Posts', value: stats.blogPosts, color: { bg: 'bg-green-100', text: 'text-green-700', badge: 'bg-green-400' } }
+                  ].map((item) => {
+                    const total = stats.totalJobs + stats.totalApplications + stats.blogPosts;
+                    const percentage = total > 0 ? ((item.value / total) * 100).toFixed(1) : '0';
+                    return (
+                      <div key={item.label} className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className={`w-2 h-2 rounded-full ${item.color.badge}`} />
+                          <span className="text-sm font-medium">{item.label}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm font-semibold">{item.value}</span>
+                          <span className={`px-2 py-1 rounded-full ${item.color.bg} ${item.color.text} text-xs font-medium`}>
+                            {percentage}%
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+
+              {/* User Engagement */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <h2 className="text-lg font-semibold">User Engagement</h2>
+                    <p className="text-sm text-gray-500">Track user activity metrics</p>
+                  </div>
+                  <select className="px-3 py-1 rounded-lg border border-gray-200 text-sm">
+                    <option>Today</option>
+                    <option>This Week</option>
+                  </select>
+                </div>
+
+                {/* Pie Chart */}
+                <div className="flex items-center justify-center mb-6">
+                  <div className="relative w-40 h-40">
+                    <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                      {(() => {
+                        const total = stats.totalUsers + stats.subscribers + stats.pendingInquiries;
+                        if (total === 0) {
+                          return <circle cx="50" cy="50" r="45" fill="#e5e7eb" />;
+                        }
+                        
+                        const segments = [
+                          { value: stats.totalUsers, color: '#166534' },
+                          { value: stats.subscribers, color: '#22c55e' },
+                          { value: stats.totalApplications, color: '#4ade80' },
+                          { value: stats.pendingInquiries, color: '#86efac' }
+                        ];
+                        
+                        let currentAngle = 0;
+                        return segments.map((segment, index) => {
+                          const percentage = (segment.value / total) * 100;
+                          const angle = (percentage / 100) * 360;
+                          const largeArc = angle > 180 ? 1 : 0;
+                          
+                          const startX = 50 + 45 * Math.cos((currentAngle * Math.PI) / 180);
+                          const startY = 50 + 45 * Math.sin((currentAngle * Math.PI) / 180);
+                          const endX = 50 + 45 * Math.cos(((currentAngle + angle) * Math.PI) / 180);
+                          const endY = 50 + 45 * Math.sin(((currentAngle + angle) * Math.PI) / 180);
+                          
+                          currentAngle += angle;
+                          
+                          return (
+                            <path
+                              key={index}
+                              d={`M 50 50 L ${startX} ${startY} A 45 45 0 ${largeArc} 1 ${endX} ${endY} Z`}
+                              fill={segment.color}
+                              stroke="white"
+                              strokeWidth="0.5"
+                            />
+                          );
+                        });
+                      })()}
+                      <circle cx="50" cy="50" r="20" fill="white" />
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-xl font-bold">
+                        {stats.totalUsers}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* User Metrics */}
+                <div className="space-y-3">
+                  {[
+                    { label: 'Total Users', value: stats.totalUsers },
+                    { label: 'Subscribers', value: stats.subscribers },
+                    { label: 'Applications', value: stats.totalApplications },
+                    { label: 'Inquiries', value: stats.pendingInquiries }
+                  ].map((item, index) => {
+                    const total = stats.totalUsers + stats.subscribers + stats.totalApplications + stats.pendingInquiries;
+                    const percentage = total > 0 ? Math.round((item.value / total) * 100) : 0;
+                    return (
+                      <div key={item.label} className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm font-medium">{item.label}</span>
+                          <span className="text-sm font-semibold">{item.value} ({percentage}%)</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-1.5">
+                          <div 
+                            className="bg-green-700 h-1.5 rounded-full transition-all duration-500"
+                            style={{ width: `${percentage}%` }}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Recent Activity Section */}
+          <div className="grid lg:grid-cols-2 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200"
             >
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold">Recent Applications</h2>
-                <Link to="/admin/applications" className="text-sm text-primary hover:underline">View all</Link>
+                <Link to="/admin/applications" className="text-sm text-green-700 hover:underline">View all</Link>
               </div>
               <div className="space-y-3">
                 {recentApplications.length === 0 ? (
-                  <p className="text-muted-foreground text-sm text-center py-8">No applications yet</p>
+                  <p className="text-gray-500 text-sm text-center py-8">No applications yet</p>
                 ) : (
                   recentApplications.map((app) => (
-                    <div key={app.id} className="flex items-center gap-4 p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors">
-                      <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
-                        <span className="text-primary-foreground font-medium text-sm">
+                    <div key={app.id} className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
+                      <div className="w-10 h-10 rounded-full bg-green-700 flex items-center justify-center">
+                        <span className="text-white font-medium text-sm">
                           {app.full_name?.charAt(0) || 'A'}
                         </span>
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-medium truncate text-sm">{app.full_name} applied for {app.jobs?.title}</p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-xs text-gray-500">
                           {new Date(app.applied_at).toLocaleDateString()}
                         </p>
                       </div>
@@ -356,28 +631,28 @@ const AdminDashboard = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="bg-card rounded-2xl p-6 shadow-sm border border-border"
+              transition={{ delay: 0.8 }}
+              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200"
             >
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold">Recent Inquiries</h2>
-                <Link to="/admin/inquiries" className="text-sm text-primary hover:underline">View all</Link>
+                <Link to="/admin/inquiries" className="text-sm text-green-700 hover:underline">View all</Link>
               </div>
               <div className="space-y-3">
                 {recentInquiries.length === 0 ? (
-                  <p className="text-muted-foreground text-sm text-center py-8">No inquiries yet</p>
+                  <p className="text-gray-500 text-sm text-center py-8">No inquiries yet</p>
                 ) : (
                   recentInquiries.map((inquiry) => (
-                    <div key={inquiry.id} className="flex items-center gap-4 p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors">
+                    <div key={inquiry.id} className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
                       <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
                         <MessageSquare className="w-5 h-5 text-amber-600" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-medium truncate text-sm">New inquiry from {inquiry.name}</p>
-                        <p className="text-xs text-muted-foreground truncate">{inquiry.subject}</p>
+                        <p className="text-xs text-gray-500 truncate">{inquiry.subject}</p>
                       </div>
                       {!inquiry.is_read && (
-                        <span className="w-2 h-2 rounded-full bg-primary"></span>
+                        <span className="w-2 h-2 rounded-full bg-green-700"></span>
                       )}
                     </div>
                   ))
