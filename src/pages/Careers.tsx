@@ -53,7 +53,7 @@ const Careers = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80" 
+            src="https://i.postimg.cc/FFMyH4Rm/Beige-Light-Floral-Wedding-Invitation-Wedding-Website.png?auto=format&fit=crop&w=2000&q=80" 
             alt="Team Background" 
             className="w-full h-full object-cover"
           />
