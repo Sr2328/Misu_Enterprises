@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import {management} from "@/assets/management.png"
+import servicecta from "@/assets/servicecta.png"
 
 interface Service {
   id: string;
@@ -500,52 +500,39 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-primary/5 via-background to-primary/10 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
-            backgroundSize: '32px 32px'
-          }} />
-        </div>
+   
 
-        <div className="container mx-auto px-4 lg:px-8 text-center relative z-10">
-          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold border border-primary/20 mb-6">
-            <Sparkles className="w-4 h-4" />
-            Get Started Today
-          </span>
-          
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-4xl mx-auto mb-6">
-            Ready to Find the{" "}
-            <span className="text-primary">Perfect Match</span>?
-          </h2>
-          
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8">
-            Let's discuss how we can help you find the right talent or the perfect opportunity for your career growth.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all"
-              asChild
-            >
-              <Link to="/contact">
-                <Briefcase className="w-5 h-5 mr-2" /> Contact Us
-              </Link>
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-2 hover:bg-primary hover:text-white px-8 py-6 text-lg rounded-full transition-all"
-              asChild
-            >
-              <Link to="/jobs">
-                <Search className="w-5 h-5 mr-2" /> Browse Jobs
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+<div className="relative w-full h-[400px] md:h-[500px]  overflow-hidden">
+  {/* Background Image */}
+  <img
+    src="https://i.postimg.cc/8ChwNY1F/Chat-GPT-Image-Jan-30-2026-06-58-00-PM.png"
+    alt="Businessman on call"
+    className="w-full h-full object-cover object-[center_30%]"
+  />
+  {/* Gradient Overlay (soft, not blocking the image) */}
+  <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
+  {/* CTA Content */}
+  <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-10 lg:px-20 text-white max-w-3xl">
+    <button className="bg-emerald-600 px-5 py-2 rounded-full text-sm w-fit mb-5 hover:bg-emerald-700 transition-colors">
+      Get Started Today
+    </button>
+    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+      Ready to Find the <span className="text-emerald-400">Perfect Match?</span>
+    </h1>
+    <p className="text-base md:text-lg mt-4 text-gray-200 max-w-xl">
+      Let's discuss how we can help you find the right talent or the perfect opportunity for your career growth.
+    </p>
+    <div className="flex flex-col sm:flex-row gap-4 mt-8">
+      <button className="bg-emerald-600 px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-emerald-700 transition-all">
+        Contact Us
+      </button>
+      <button className="border-2 border-white/40 px-6 py-3 rounded-xl font-semibold hover:bg-white/10 transition-all">
+        Browse Jobs
+      </button>
+    </div>
+  </div>
+</div>
+
     </Layout>
   );
 };
