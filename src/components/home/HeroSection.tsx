@@ -8,28 +8,28 @@ import heroimagee from "@/assets/heroimagee.png"
 const heroSlides = [
   {
     image: "https://i.postimg.cc/44m2RP0s/Chat-GPT-Image-Jan-30-2026-10-54-07-AM-(1).png?w=1920&auto=format&fit=crop",
-    mobileImage: "https://i.postimg.cc/44m2RP0s/Chat-GPT-Image-Jan-30-2026-10-54-07-AM-(1).png?w=800&auto=format&fit=crop",
+    mobileImage: "https://i.postimg.cc/QdM79YZy/Chat-GPT-Image-Jan-30-2026-11-56-40-AM.png?w=800&auto=format&fit=crop",
     title: "Complete Workforce",
     subtitle: "Solutions for All Industries",
     description: "MISU Enterprise delivers comprehensive staffing and recruitment services across diverse sectors."
   },
   {
     image: "https://i.postimg.cc/tJ4j9xL4/Chat-GPT-Image-Jan-30-2026-11-07-46-AM.png?w=1920&auto=format&fit=crop",
-    mobileImage: "https://i.postimg.cc/tJ4j9xL4/Chat-GPT-Image-Jan-30-2026-11-07-46-AM.png?w=800&auto=format&fit=crop",
+    mobileImage: "https://i.postimg.cc/Ght3vW9j/Chat-GPT-Image-Jan-30-2026-11-59-21-AM.png?w=800&auto=format&fit=crop",
     title: "Professional Recruitment",
     subtitle: "Connecting Talent Nationwide",
     description: "Specialized in placing top-tier professionals in IT, healthcare, engineering, and corporate roles."
   },
   {
     image: "https://i.postimg.cc/8PBrsQJQ/503907b3-a449-4f3a-aab8-58eca85cf5c6.png?w=1920&auto=format&fit=crop",
-    mobileImage: "https://i.postimg.cc/8PBrsQJQ/503907b3-a449-4f3a-aab8-58eca85cf5c6.png?w=800&auto=format&fit=crop",
+    mobileImage: "https://i.postimg.cc/8cPvRZrr/Chat-GPT-Image-Jan-30-2026-12-04-56-PM.png?w=800&auto=format&fit=crop",
     title: "Industry Expertise",
     subtitle: "Tailored Staffing Solutions",
     description: "From contract positions to permanent placements, we understand your industry-specific needs."
   },
   {
     image: "https://i.postimg.cc/9M3kx7WJ/Chat-GPT-Image-Jan-30-2026-11-24-21-AM.png?w=1920&auto=format&fit=crop",
-    mobileImage: "https://i.postimg.cc/9M3kx7WJ/Chat-GPT-Image-Jan-30-2026-11-24-21-AM.png?w=800&auto=format&fit=crop",
+    mobileImage: "https://i.postimg.cc/v8f8hrvL/Chat-GPT-Image-Jan-30-2026-12-10-40-PM.png?w=800&auto=format&fit=crop",
     title: "Build Your Team",
     subtitle: "Fast & Reliable Service",
     description: "Partner with MISU for efficient hiring processes and high-performing talent delivery."
