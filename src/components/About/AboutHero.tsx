@@ -49,7 +49,7 @@ export function AboutHeroSection() {
             transition={{ duration: 0.5 }}
             className="text-left"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-sm font-medium mb-4 backdrop-blur-sm">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-sm font-medium mb-4 backdrop-blur-sm mt-5">
               About MISU Enterprises
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
