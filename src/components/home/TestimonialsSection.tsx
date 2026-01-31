@@ -6,30 +6,31 @@ import testimonial2 from "@/assets/testimonial-2.jpg";
 import testimonial3 from "@/assets/testimonial-3.jpg";
 
 const testimonials = [
-  {
-    id: 1,
-    name: "Maria Santos",
-    role: "HR Director, TechCorp PH",
-    image: testimonial1,
-    content: "MISO Enterprises has been instrumental in helping us find top talent. Their understanding of our industry needs is exceptional.",
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: "David Chen",
-    role: "CEO, StartUp Ventures",
-    image: testimonial2,
-    content: "The team's professionalism and dedication exceeded our expectations. They helped us build our entire management team within 3 months.",
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: "Ana Rodriguez",
-    role: "Operations Manager",
-    image: testimonial3,
-    content: "I found my dream job through MISO. The career coaching and support throughout the process was incredible.",
-    rating: 5,
-  },
+ {
+  id: 1,
+  name: "Priya Sharma",
+  role: "HR Director, TechCorp India",
+  image: testimonial1,
+  content: "MISO Enterprises has been instrumental in helping us find top talent. Their understanding of our industry needs is exceptional.",
+  rating: 5,
+},
+{
+  id: 2,
+  name: "Rahul Mehta",
+  role: "CEO, StartUp Ventures",
+  image: testimonial2,
+  content: "The team's professionalism and dedication exceeded our expectations. They helped us build our entire management team within 3 months.",
+  rating: 5,
+},
+{
+  id: 3,
+  name: "Ananya Iyer",
+  role: "Operations Manager",
+  image: testimonial3,
+  content: "I found my dream job through MISO. The career coaching and support throughout the process was incredible.",
+  rating: 5,
+},
+
 ];
 
 export function TestimonialsSection() {
