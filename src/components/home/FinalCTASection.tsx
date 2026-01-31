@@ -99,7 +99,7 @@ export default function FinalCTASection() {
               <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors duration-300">
                 <Phone className="w-5 h-5" />
               </div>
-              <span className="text-base font-medium">+91 98765 43210</span>
+              <span className="text-base font-medium">+91 9540603737</span>
             </a>
             
             <span className="hidden sm:block w-px h-8 bg-white/20"></span>
