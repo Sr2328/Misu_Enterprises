@@ -26,7 +26,6 @@ const ManpowerServices = () => {
     const interval = setInterval(() => {
       setActiveCard((prev) => (prev + 1) % 4);
     }, 5000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -54,22 +53,22 @@ const ManpowerServices = () => {
           </div>
 
           {/* Right Side - Service Cards */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-2 sm:gap-4">
             {services.map((service, index) => (
               <div
                 key={index}
-                className={`p-6 rounded-2xl transition-all duration-1000 ease-in-out ${
+                className={`p-3 sm:p-6 rounded-2xl transition-all duration-1000 ease-in-out ${
                   activeCard === index
                     ? 'bg-emerald-600 text-white'
                     : 'bg-gray-900 text-white'
                 }`}
               >
-                <div className="mb-4">
-                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${
+                <div className="mb-2 sm:mb-4">
+                  <div className={`w-8 h-8 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-2 sm:mb-4 ${
                     activeCard === index ? 'bg-white/20' : 'bg-emerald-600'
                   }`}>
                     <svg 
-                      className="w-6 h-6 text-white" 
+                      className="w-4 h-4 sm:w-6 sm:h-6 text-white" 
                       fill="none" 
                       stroke="currentColor" 
                       viewBox="0 0 24 24"
@@ -89,10 +88,10 @@ const ManpowerServices = () => {
                     </svg>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-3 leading-tight">
+                <h3 className="text-sm sm:text-xl font-bold mb-1 sm:mb-3 leading-tight">
                   {service.title}
                 </h3>
-                <p className={`text-sm leading-relaxed ${
+                <p className={`text-xs sm:text-sm leading-relaxed ${
                   activeCard === index ? 'text-white/90' : 'text-gray-300'
                 }`}>
                   {service.description}

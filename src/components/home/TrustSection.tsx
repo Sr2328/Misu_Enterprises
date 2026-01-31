@@ -163,7 +163,7 @@ export default function WhyChooseSection() {
               className="relative rounded-2xl overflow-hidden shadow-lg h-64 lg:h-80"
             >
               <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=600&fit=crop"
+                src="https://i.postimg.cc/3wTK6Myj/Chat-GPT-Image-Jan-30-2026-10-43-52-AM.png?w=800&h=700&fit=crop"
                 alt="MISU team collaboration"
                 className="w-full h-full object-cover"
               />

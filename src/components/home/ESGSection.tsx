@@ -63,7 +63,7 @@ export default function ESGSection() {
 
         {/* Cards Grid */}
         <div className="grid lg:grid-cols-5 gap-6">
-          {/* Flip Card - Left Side */}
+          {/* Flip Card - Left Side — UNCHANGED */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -90,10 +90,7 @@ export default function ESGSection() {
                     backgroundPosition: "center"
                   }}
                 >
-                  {/* Light overlay for better visibility */}
                   <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/20 to-black/30"></div>
-                  
-                  {/* Learn More Button */}
                   <div className="absolute bottom-8 left-8 right-8 z-10">
                     <button 
                       onClick={handleFlip}
@@ -162,35 +159,35 @@ export default function ESGSection() {
             </div>
           </motion.div>
 
-          {/* Right Side Stats Cards */}
-          <div className="lg:col-span-3 grid grid-cols-2 gap-4 lg:gap-6">
+          {/* Right Side Stats Cards — ONLY THESE WERE TOUCHED */}
+          <div className="lg:col-span-3 grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
             {esgPillars.map((pillar, index) => (
               <motion.div
                 key={pillar.label}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                className="group relative bg-white rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+                className="group relative bg-white rounded-2xl p-3 sm:p-5 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
                 {/* Subtle gradient overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/0 to-emerald-50/0 group-hover:from-emerald-50/50 group-hover:to-transparent rounded-2xl transition-all duration-300"></div>
                 
                 <div className="relative z-10">
                   {/* Icon */}
-                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300">
-                    <pillar.icon className="w-6 h-6 text-emerald-600" />
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 lg:w-12 lg:h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-2.5 sm:mb-3 lg:mb-4 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300">
+                    <pillar.icon className="w-4.5 h-4.5 sm:w-5.5 sm:h-5.5 lg:w-6 lg:h-6 text-emerald-600" />
                   </div>
 
                   {/* Value */}
-                  <div className="mb-2">
-                    <span className="text-3xl lg:text-4xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
+                  <div className="mb-1.5 sm:mb-2">
+                    <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
                       {pillar.value}
                     </span>
-                    <span className="text-sm text-gray-500 ml-1">{pillar.label}</span>
+                    <span className="text-xs sm:text-sm text-gray-500 ml-1">{pillar.label}</span>
                   </div>
 
                   {/* Description */}
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                     {pillar.description}
                   </p>
                 </div>

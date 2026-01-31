@@ -184,7 +184,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex flex-col sm:flex-row items-center gap-2 text-center md:text-left">
               <p className="text-gray-500 text-xs lg:text-sm">
-                © 2024 MISU Enterprises. All rights reserved.
+                © 2026 MISU Enterprises. All rights reserved.
               </p>
               <span className="hidden sm:inline text-gray-600">|</span>
               <p className="text-gray-500 text-xs lg:text-sm">
