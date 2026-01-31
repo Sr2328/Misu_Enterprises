@@ -111,7 +111,7 @@ export default function IndustrySolutionsSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="sm:col-span-2 bg-zinc-900 text-background p-6 rounded-xl shadow-xl h-full flex flex-col justify-center"
+              className="sm:col-span-2 bg-black text-background p-6 rounded-xl shadow-xl h-full flex flex-col justify-center"
             >
               <h3 className="font-bold text-lg mb-4 leading-tight">
                 Core Industries
